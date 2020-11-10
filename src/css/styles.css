@@ -11,7 +11,7 @@ body {
 .search-form .input {
   text-align: center;
 
-  width: 30%;
+  width: 350px;
   height: 45px;
 
   font-size: 1.2em;
@@ -80,7 +80,7 @@ body {
 }
 
 .btnLoadMore {
-  width: 10%;
+  width: 150px;
   height: 35px;
 
   border-radius: 5px;

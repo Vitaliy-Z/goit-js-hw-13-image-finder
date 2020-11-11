@@ -81,6 +81,8 @@ body {
 }
 
 .btnLoadMore {
+  margin-bottom: 30px;
+
   width: 25%;
   height: 35px;
 

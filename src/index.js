@@ -2,6 +2,7 @@ import ApiService from './js/apiService';
 const debounce = require('lodash.debounce');
 import imageTpl from './templates/imageCard.hbs';
 import './css/styles.css';
+import onOpenModal from './js/modal';
 
 const refs = {
   searchForm: document.querySelector('.search-form'),
@@ -16,6 +17,7 @@ let windowHeight = 0;
 refs.searchForm.addEventListener('input', debounce(onSearch, 700));
 refs.searchForm.addEventListener('submit', onSubmit);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
+refs.gallery.addEventListener('click', onOpenModal);
 
 let isSubmit = false;
 

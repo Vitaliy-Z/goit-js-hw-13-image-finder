@@ -14,23 +14,39 @@ const apiService = new ApiService();
 let windowHeight = 0;
 
 refs.searchForm.addEventListener('input', debounce(onSearch, 700));
+refs.searchForm.addEventListener('submit', onSubmit);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
+
+let isSubmit = false;
 
 function onSearch(e) {
   e.preventDefault();
 
-  if (e.target.value === '') {
+  apiService.query = refs.searchForm.elements.query.value;
+
+  if (apiService.query === '') {
     clearGallery();
+    btnHidden();
     return;
   }
 
-  apiService.query = e.target.value;
-
-  apiService.resetPage();
-  apiService.fetchArticles().then(images => {
+  if (isSubmit) {
+    isSubmit = false;
+    return;
+  } else {
     clearGallery();
-    imagesMarkup(images);
-  });
+    apiService.fetchArticles().then(images => {
+      imagesMarkup(images);
+      btnLoadMoreNoHidden();
+    });
+  }
+}
+
+function onSubmit(e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  onSearch(e);
+  isSubmit = true;
 }
 
 function onLoadMore() {
@@ -50,11 +66,20 @@ function imagesMarkup(images) {
 
 function clearGallery() {
   refs.gallery.innerHTML = '';
+  apiService.resetPage();
+}
+
+function btnHidden() {
+  refs.btnLoadMore.disabled = true;
+  refs.btnLoadMore.classList.add('visually-hidden');
+}
+
+function btnLoadMoreNoHidden() {
+  refs.btnLoadMore.disabled = false;
+  refs.btnLoadMore.classList.remove('visually-hidden');
 }
 
 function scrollPage() {
-  console.log(windowHeight);
-
   window.scrollTo({
     top: windowHeight,
     behavior: 'smooth',

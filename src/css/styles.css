@@ -106,6 +106,10 @@ body {
     font-size: 0.9em;
   }
 
+  .photo-card {
+    width: 100%;
+  }
+
   .stats {
     display: none;
   }
@@ -115,4 +119,15 @@ body {
     height: 20px;
     font-size: 0.7em;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

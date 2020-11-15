@@ -102,12 +102,13 @@ body {
 
   .search-form .input {
     width: 70%;
-    height: 30px;
-    font-size: 0.9em;
+    height: 40px;
+    font-size: 0.7em;
   }
 
   .photo-card {
-    width: 100%;
+    width: calc((100% - 40px) / 2);
+    margin: 10px;
   }
 
   .stats {

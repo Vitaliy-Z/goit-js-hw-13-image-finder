@@ -9,7 +9,9 @@ export default function onOpenModal(event) {
   }
 
   const instance = basicLightbox.create(
-    `<img src="${event.target.dataset.src}" alt="" />`,
+    `<a href="${event.target.dataset.src}">
+     <img src="${event.target.dataset.src}" alt=""  width="100%" />
+    </a>`,
   );
   instance.show();
 }
